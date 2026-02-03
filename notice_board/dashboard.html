@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notice Dashboard</title>
+  <style>
+    body { font-family:Arial; background:#eef; }
+    .box {
+      width:400px; margin:50px auto; padding:20px;
+      background:white; box-shadow:0 0 10px gray;
+    }
+    textarea,select,button { width:100%; padding:8px; margin:8px 0; }
+    button { background:green; color:white; border:none; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h3>Send Notice</h3>
+
+  <textarea id="message" placeholder="Type notice here"></textarea>
+
+  <input type="radio" name="type" checked onclick="show(false)"> All Classes<br>
+  <input type="radio" name="type" onclick="show(true)"> Particular Class<br>
+
+  <select id="cls" style="display:none">
+    <option value="class1">Class 1</option>
+    <option value="class2">Class 2</option>
+    <option value="class3">Class 3</option>
+    <option value="class4">Class 4</option>
+    <option value="class5">Class 5</option>
+    <option value="class6">Class 6</option>
+    <option value="class7">Class 7</option>
+    <option value="class8">Class 8</option>
+    <option value="class9">Class 9</option>
+    <option value="class10">Class 10</option>
+  </select>
+
+  <button onclick="send()">SEND</button>
+  <p id="out"></p>
+</div>
+
+<script>
+function show(x){
+  cls.style.display = x ? "block":"none";
+}
+function send(){
+  let topic="notice/all";
+  if(cls.style.display=="block"){
+    topic="notice/"+cls.value;
+  }
+  out.innerText="Message sent to: "+topic+"\nMessage: "+message.value;
+}
+</script>
+
+</body>
+</html>
